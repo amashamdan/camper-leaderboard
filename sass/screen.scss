@@ -1,0 +1,78 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+$body-color: #AE3C3C;
+$main-header-color: #246868;
+$header-text-color: #575757;
+$entry-text-color: #575757; 
+
+* {
+	margin: 0;
+}
+
+body {
+	background-color: $body-color;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#container {
+	width: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+#table {
+	width: 100%;
+	background-color: white;
+}
+
+.main-header {
+	text-align: center;
+	width: 100%;
+	background-color: $main-header-color;
+	color: white;
+}
+
+@mixin headers {
+	padding: 4px;
+	color: $header-text-color;
+	border-bottom: 3px solid gray;  
+}
+
+.number-header {
+	@include headers;
+	width: 10%;
+}
+
+.name-header, .points-header, .all-points-header {
+	@include headers;
+	width: 30%;
+}
+
+@mixin entries {
+	padding: 3px;
+	color: $entry-text-color;
+	border-bottom: 1px solid gray;  
+}
+
+.number-entry, .points-entry, .all-points-entry {
+	@include entries;
+}
+
+.name-entry {
+	@include entries;
+	text-align: left;
+}
+
+.footer {
+	margin-top: 30px;
+	font-size: 0.8em;
+	color: white;
+	a {
+		color: white;
+	}
+	p, li {
+		margin-top: 5px;
+	}
+}
