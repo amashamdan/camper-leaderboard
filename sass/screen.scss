@@ -32,6 +32,8 @@ body {
 	width: 100%;
 	background-color: $main-header-color;
 	color: white;
+	margin-top: 50px;
+	padding: 10px 0 10px 0;
 }
 
 @mixin headers {
@@ -48,6 +50,9 @@ body {
 .name-header, .points-header, .all-points-header {
 	@include headers;
 	width: 30%;
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 @mixin entries {
@@ -63,10 +68,19 @@ body {
 .name-entry {
 	@include entries;
 	text-align: left;
+	a {
+		color: $main-header-color;
+	}
+}
+
+.user-image {
+	width: 40px;
+	margin-right: 10px;
+	vertical-align: middle;
 }
 
 .footer {
-	margin-top: 30px;
+	margin: 30px 0 40px 0;
 	font-size: 0.8em;
 	color: white;
 	a {
