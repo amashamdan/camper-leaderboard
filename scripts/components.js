@@ -3,12 +3,17 @@ var BoardHeader = React.createClass({
 		return {data: []};
 	},
 	componentDidMount: function() {
+		$(".points-header").css("backgroundColor", "#CDC9C9");
 		this.getData("https://fcctop100.herokuapp.com/api/fccusers/top/recent");
 	},
 	pointsHandler: function() {
+		$(".points-header").css("backgroundColor", "#CDC9C9");
+		$(".all-points-header").css("backgroundColor", "white");
 		this.getData("https://fcctop100.herokuapp.com/api/fccusers/top/recent");
 	},	
 	allPointsHandler: function() {
+		$(".points-header").css("backgroundColor", "white");
+		$(".all-points-header").css("backgroundColor", "#CDC9C9");
 		this.getData("https://fcctop100.herokuapp.com/api/fccusers/top/alltime");
 	},
 	getData: function(url) {
