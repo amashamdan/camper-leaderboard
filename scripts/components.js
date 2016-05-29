@@ -3,13 +3,22 @@ var BoardHeader = React.createClass({
 		return {data: []};
 	},
 	componentDidMount: function() {
+		this.getData("https://fcctop100.herokuapp.com/api/fccusers/top/recent");
+	},
+	pointsHandler: function() {
+		this.getData("https://fcctop100.herokuapp.com/api/fccusers/top/recent");
+	},	
+	allPointsHandler: function() {
+		this.getData("https://fcctop100.herokuapp.com/api/fccusers/top/alltime");
+	},
+	getData: function(url) {
 		$.ajax({
-			url: "https://fcctop100.herokuapp.com/api/fccusers/top/recent",
+			url: url,
 			dataType: "json",
 			success: function(data) {
 				this.setState({data: data});
 			}.bind(this)
-		});
+		});		
 	},
 	render: function() {
 		return (
@@ -22,8 +31,8 @@ var BoardHeader = React.createClass({
 						<tr>
 							<th className="number-header">#</th>
 							<th className="name-header">Camper</th>
-							<th className="points-header">Points in last 30 days</th>
-							<th className="all-points-header">All time points</th>
+							<th className="points-header" onClick={this.pointsHandler}>Points in last 30 days</th>
+							<th className="all-points-header" onClick={this.allPointsHandler}>All time points</th>
 						</tr>
 					</thead>
 					<BoardRow data={this.state.data} />
