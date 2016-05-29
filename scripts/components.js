@@ -1,4 +1,16 @@
 var BoardHeader = React.createClass({
+	getInitialState: function() {
+		return {data: []};
+	},
+	componentDidMount: function() {
+		$.ajax({
+			url: "https://fcctop100.herokuapp.com/api/fccusers/top/recent",
+			dataType: "json",
+			success: function(data) {
+				this.setState({data: data});
+			}.bind(this)
+		});
+	},
 	render: function() {
 		return (
 			<div>
@@ -14,9 +26,7 @@ var BoardHeader = React.createClass({
 							<th className="all-points-header">All time points</th>
 						</tr>
 					</thead>
-					<tbody>
-						<BoardRow />
-					</tbody>
+					<BoardRow data={this.state.data} />
 				</table>
 			</div>
 		);
@@ -25,16 +35,25 @@ var BoardHeader = React.createClass({
 
 var BoardRow = React.createClass({
 	render: function() {
+		var c = 0;
+		var rows = this.props.data.map(function(row) {
+			var link = "https://www.freecodecamp.com/"+ row.username;
+			c++;
+			return (
+				<tr key={c}>
+					<th className="number-entry">{c}</th>
+					<th className="name-entry"><img className="user-image" src={row.img}/> <a href={link}>{row.username}</a></th>
+					<th className="points-entry">{row.recent}</th>
+					<th className="all-points-entry">{row.alltime}</th>	
+				</tr>
+			);
+		});
 		return (
-			<tr>
-				<th className="number-entry">A number</th>
-				<th className="name-entry">A name</th>
-				<th className="points-entry">Another number</th>
-				<th className="all-points-entry">Final number</th>				
-			</tr>
+			<tbody>
+				{rows}
+			</tbody>
 		);
 	}
-})
-
+});
 
 ReactDOM.render(<BoardHeader />, document.getElementById("board"));
