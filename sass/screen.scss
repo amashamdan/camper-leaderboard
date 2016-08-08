@@ -32,14 +32,16 @@ body {
 	width: 100%;
 	background-color: $main-header-color;
 	color: white;
-	margin-top: 50px;
 	padding: 10px 0 10px 0;
+	font-size: 0.8em;
 }
 
 @mixin headers {
 	padding: 4px;
 	color: $header-text-color;
-	border-bottom: 3px solid gray;  
+	border-bottom: 3px solid gray; 
+	/* new */
+	font-size: 0.8em;
 }
 
 .number-header {
@@ -58,7 +60,9 @@ body {
 @mixin entries {
 	padding: 3px;
 	color: $entry-text-color;
-	border-bottom: 1px solid gray;  
+	border-bottom: 1px solid gray;
+	/* new */
+	font-size: 0.8em;
 }
 
 .number-entry, .points-entry, .all-points-entry {
@@ -75,18 +79,33 @@ body {
 
 .user-image {
 	width: 40px;
+	/* new */
+	display: none;
 	margin-right: 10px;
 	vertical-align: middle;
 }
 
 .footer {
 	margin: 30px 0 40px 0;
-	font-size: 0.8em;
+	/* changed */
+	font-size: 0.7em;
 	color: white;
 	a {
 		color: white;
 	}
 	p, li {
 		margin-top: 5px;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.main-header {
+		margin-top: 50px;
+	}
+	.user-image {
+		width: 40px;
+		display: inline;
+		margin-right: 10px;
+		vertical-align: middle;
 	}
 }
